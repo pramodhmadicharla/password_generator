@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/first.jpeg') }}");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Generator</h1>
+        <form method="POST">
+            <label for="length">Enter password length:</label>
+            <input type="number" id="length" name="length" min="1" required>
+            <button type="submit">Generate Password</button>
+        </form>
+        {% if password %}
+            <div class="result">
+                <p><strong>Generated Password:</strong> {{ password }}</p>
+                <p><strong>Password Strength:</strong> {{ strength }}</p>
+            </div>
+        {% endif %}
+        <a href="/passwords">View Stored Passwords</a>
+    </div>
+</body>
+</html>
